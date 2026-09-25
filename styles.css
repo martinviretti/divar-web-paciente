@@ -1139,3 +1139,70 @@ img { max-width: 100%; display: block; }
   .treatment-card__image { height: 210px; }
   .professional-card__photo { height: 290px; }
 }
+
+/* ==========================================================================
+   Fotografía del centro y retratos del equipo (v2.1.0)
+   ========================================================================== */
+
+/* Los retratos pasaron de ilustraciones cuadradas a fotos verticales
+   (1200x1500): `contain` las dejaba flotando con aire a los lados, así que
+   ahora llenan la tarjeta y se anclan a la cara. */
+.professional-card__photo img { object-fit: cover; object-position: center 22%; }
+
+.clinic-section { padding-top: 0; }
+.clinic-gallery {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.clinic-shot {
+  position: relative;
+  margin: 0;
+  border: 1px solid rgba(8, 78, 143, .09);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #dff0fb;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.clinic-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.clinic-shot figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px 20px 16px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent, rgba(2, 36, 74, .72));
+}
+.clinic-shot:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+@media (max-width: 700px) {
+  .clinic-gallery { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* Los avatares recortan al centro geométrico, que en un retrato vertical cae
+   sobre el torso. Se suben al tercio superior para encuadrar la cara. */
+.message-preview__avatar,
+.conversation-item img,
+.chat-header__person img { object-position: center 18%; }
+
+/* En el selector de profesional el retrato entraba con `contain` y quedaba
+   una figura diminuta con aire a los lados. */
+.professional-selection-card img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  background: #dbeff9;
+}
