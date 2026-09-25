@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b5eb7">
+  <meta name="description" content="DIVAR Odontología: sitio institucional y portal privado para pacientes. Turnos, historial, estudios, mensajes y pagos en un solo lugar.">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="DIVAR Odontología">
+  <meta property="og:description" content="Tu salud bucal, organizada y accesible desde web o app.">
+  <title>DIVAR Odontología | Portal de pacientes</title>
+  <link rel="icon" href="assets/app/app-icon-192.png">
+  <link rel="apple-touch-icon" href="assets/app/app-icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Saltar al contenido</a>
+
+  <div id="publicSite" class="public-site">
+    <header class="public-header" id="siteHeader">
+      <div class="public-header__inner container">
+        <a class="brand-link brand-lockup" href="#inicio" aria-label="DIVAR Odontología, inicio">
+          <img class="brand-lockup__mark" src="assets/brand/logo-symbol.webp" alt="">
+          <span class="brand-lockup__text"><strong>DIVAR</strong><small>ODONTOLOGÍA</small></span>
+        </a>
+        <nav class="public-nav" aria-label="Navegación principal">
+          <a href="#servicios">Tratamientos</a>
+          <a href="#equipo">Profesionales</a>
+          <a href="#acceso">Cómo funciona</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="public-header__actions">
+          <button class="button button--ghost button--compact" data-action="open-first-visit">Primera consulta</button>
+          <button class="button button--primary button--compact" data-action="open-login">Ingresar</button>
+          <button class="icon-button public-menu-button" data-action="toggle-public-menu" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div id="mobilePublicMenu" class="public-mobile-menu" hidden>
+        <a href="#servicios">Tratamientos</a>
+        <a href="#equipo">Profesionales</a>
+        <a href="#acceso">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+        <button class="button button--ghost" data-action="open-first-visit">Primera consulta</button>
+        <button class="button button--primary" data-action="open-login">Ingresar al portal</button>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <section id="inicio" class="hero-section">
+        <div class="hero-orb hero-orb--one"></div>
+        <div class="hero-orb hero-orb--two"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow__dot"></span> Atención odontológica organizada alrededor del paciente</span>
+            <h1>Tu salud bucal, <span>en un solo lugar.</span></h1>
+            <p>Reservá y gestioná turnos, consultá tu plan de tratamiento, historial, estudios, mensajes y pagos desde la misma cuenta, en la web o instalada como app.</p>
+            <div class="hero-actions">
+              <button class="button button--primary button--large" data-action="open-login">Ingresar al portal <span aria-hidden="true">→</span></button>
+              <button class="button button--soft button--large" data-action="open-first-visit">Solicitar primera consulta</button>
+            </div>
+            <div class="hero-trust" aria-label="Beneficios del portal">
+              <div><strong>1 cuenta</strong><span>para toda tu atención</span></div>
+              <div><strong>24/7</strong><span>acceso a tu información</span></div>
+              <div><strong>Web + app</strong><span>misma experiencia</span></div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-glass-panel">
+              <img class="hero-tooth" src="assets/illustrations/hero-tooth-shield.webp" alt="">
+              <div class="floating-card floating-card--appointment">
+                <span class="floating-card__icon">✓</span>
+                <div><strong>Turno confirmado</strong><span>Miércoles 15 · 10:30 h</span></div>
+              </div>
+              <div class="floating-card floating-card--record">
+                <img src="assets/icons/icon-historia-clinica.webp" alt="">
+                <div><strong>Historia clínica</strong><span>Siempre disponible</span></div>
+              </div>
+              <div class="hero-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Servicios digitales">
+        <div class="container trust-strip__grid">
+          <div><img src="assets/icons/icon-turnos.webp" alt=""><span>Turnos sin llamadas</span></div>
+          <div><img src="assets/icons/icon-historia-clinica.webp" alt=""><span>Historial centralizado</span></div>
+          <div><img src="assets/icons/icon-estudios.webp" alt=""><span>Estudios y documentos</span></div>
+          <div><img src="assets/icons/icon-mensajes.webp" alt=""><span>Comunicación con el consultorio</span></div>
+        </div>
+      </section>
+
+      <section id="servicios" class="section section--soft">
+        <div class="container">
+          <div class="section-heading section-heading--split">
+            <div>
+              <span class="eyebrow">Tratamientos</span>
+              <h2>Atención integral para cada etapa de tu sonrisa</h2>
+            </div>
+            <p>La información es orientativa. La indicación definitiva surge de la evaluación profesional y queda registrada en tu plan personal.</p>
+          </div>
+          <div id="publicTreatmentGrid" class="treatment-grid" aria-live="polite"></div>
+          <div class="section-center-action">
+            <button class="button button--outline" data-action="show-all-treatments">Ver todos los tratamientos</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="acceso" class="section access-section">
+        <div class="container access-grid">
+          <div class="access-visual">
+            <div class="access-image-card">
+              <img src="assets/backgrounds/photo-clinic.webp" alt="Consultorio odontológico moderno">
+              <div class="access-image-card__badge">
+                <img src="assets/brand/logo-symbol.webp" alt="">
+                <div><strong>Acceso privado</strong><span>Tu información, ordenada por paciente</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="access-content">
+            <span class="eyebrow">Cómo funciona</span>
+            <h2>El consultorio te habilita una cuenta. Vos tomás el control desde ahí.</h2>
+            <div class="steps-list">
+              <article class="step-item"><span>1</span><div><h3>Registramos tu correo</h3><p>Puede ser Gmail u otro correo personal. El consultorio no solicita ni conoce la contraseña de tu cuenta de Google.</p></div></article>
+              <article class="step-item"><span>2</span><div><h3>Recibís una clave temporal de DIVAR</h3><p>La usás solo para el primer ingreso. Es independiente de tu correo y vence después de utilizarla.</p></div></article>
+              <article class="step-item"><span>3</span><div><h3>Creás tu contraseña definitiva</h3><p>Desde ese momento administrás turnos, tratamientos, documentos, mensajes y pagos desde web o app.</p></div></article>
+            </div>
+            <div class="security-note">
+              <span class="security-note__icon">🔒</span>
+              <p><strong>Importante:</strong> nunca ingreses la contraseña de Google dentro de un formulario de DIVAR. En producción, el acceso con Google debe realizarse mediante OAuth oficial.</p>
+            </div>
+            <button class="button button--primary" data-action="open-login">Ya tengo una cuenta</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipo" class="section section--deep">
+        <div class="container">
+          <div class="section-heading section-heading--light">
+            <span class="eyebrow eyebrow--light">Equipo profesional</span>
+            <h2>La tecnología acompaña. La atención sigue siendo humana.</h2>
+            <p>Los nombres, matrículas y especialidades visibles en esta demostración deben reemplazarse por los datos reales del equipo DIVAR.</p>
+          </div>
+          <div id="professionalGrid" class="professional-grid"></div>
+        </div>
+      </section>
+
+      <section class="section portal-preview-section">
+        <div class="container portal-preview-grid">
+          <div class="portal-preview-copy">
+            <span class="eyebrow">Portal del paciente</span>
+            <h2>Sin pantallas repetidas ni turnos duplicados</h2>
+            <p>El portal usa una única sección de <strong>Turnos</strong> como fuente de verdad. El inicio muestra solamente el próximo turno y un acceso para gestionarlo. Todo lo demás se organiza por función.</p>
+            <ul class="feature-check-list">
+              <li><span>✓</span> Próximo turno y gestión en un solo lugar</li>
+              <li><span>✓</span> Plan de tratamiento, historial y estudios agrupados en “Mi salud”</li>
+              <li><span>✓</span> Mensajes, pagos, cobertura y grupo familiar</li>
+              <li><span>✓</span> Diseño adaptable para computadora, tablet y celular</li>
+            </ul>
+            <button class="button button--primary" data-action="open-demo">Probar portal de demostración</button>
+          </div>
+          <div class="portal-preview-window" aria-hidden="true">
+            <div class="portal-preview-window__top"><span></span><span></span><span></span></div>
+            <div class="portal-preview-window__body">
+              <aside>
+                <img class="preview-logo-mark" src="assets/brand/logo-symbol.webp" alt="">
+                <i></i><i></i><i></i><i></i><i></i>
+              </aside>
+              <div class="preview-dashboard">
+                <div class="preview-dashboard__header"></div>
+                <div class="preview-dashboard__hero">
+                  <div></div><img src="assets/illustrations/hero-tooth-prevention.webp" alt="">
+                </div>
+                <div class="preview-dashboard__cards"><i></i><i></i><i></i></div>
+                <div class="preview-dashboard__rows"><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="container faq-grid">
+          <div class="faq-intro">
+            <span class="eyebrow">Preguntas frecuentes</span>
+            <h2>Lo esencial antes de comenzar</h2>
+            <p>La versión final debe conectarse con el sistema de agenda y la historia clínica del consultorio.</p>
+          </div>
+          <div id="faqList" class="faq-list"></div>
+        </div>
+      </section>
+
+      <section id="contacto" class="section contact-section">
+        <div class="container contact-card">
+          <div class="contact-card__copy">
+            <span class="eyebrow eyebrow--light">DIVAR Odontología</span>
+            <h2>¿Todavía no tenés una cuenta?</h2>
+            <p>Solicitá tu primera consulta. Una vez validado tu registro, el consultorio podrá enviarte el acceso temporal al portal.</p>
+            <div class="contact-items">
+              <span>📍 Dirección pendiente de configuración</span>
+              <span>☎ WhatsApp pendiente de configuración</span>
+              <span>✉ Correo pendiente de configuración</span>
+            </div>
+          </div>
+          <button class="button button--white button--large" data-action="open-first-visit">Solicitar contacto <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="public-footer">
+      <div class="container public-footer__grid">
+        <div><div class="brand-lockup brand-lockup--light"><img class="brand-lockup__mark" src="assets/brand/logo-symbol.webp" alt=""><span class="brand-lockup__text"><strong>DIVAR</strong><small>ODONTOLOGÍA</small></span></div><p>Experiencia digital demostrativa para la gestión integral del paciente.</p></div>
+        <div><strong>Atención</strong><a href="#servicios">Tratamientos</a><a href="#equipo">Profesionales</a><a href="#contacto">Contacto</a></div>
+        <div><strong>Pacientes</strong><button data-action="open-login">Ingresar</button><button data-action="open-first-visit">Primera consulta</button><button data-action="open-demo">Ver demostración</button></div>
+        <div><strong>Legal</strong><span>Privacidad a definir</span><span>Términos a definir</span><span>Datos de salud protegidos</span></div>
+      </div>
+      <div class="container public-footer__bottom"><span>© <span id="currentYear"></span> DIVAR Odontología</span><span>Prototipo funcional · Datos demostrativos</span></div>
+    </footer>
+  </div>
+
+  <div id="portalApp" class="portal-app" hidden>
+    <aside class="portal-sidebar" id="portalSidebar">
+      <div class="portal-sidebar__brand">
+        <div class="brand-lockup brand-lockup--light"><img class="brand-lockup__mark" src="assets/brand/logo-symbol.webp" alt=""><span class="brand-lockup__text"><strong>DIVAR</strong><small>ODONTOLOGÍA</small></span></div>
+        <button class="icon-button sidebar-close" data-action="close-sidebar" aria-label="Cerrar menú">×</button>
+      </div>
+      <div class="patient-compact" id="sidebarPatientCard"></div>
+      <nav id="portalNavigation" class="portal-nav" aria-label="Portal del paciente"></nav>
+      <div class="portal-sidebar__bottom">
+        <button class="emergency-button" data-action="open-emergency"><img src="assets/icons/icon-urgencias.webp" alt=""><span><strong>¿Tenés una urgencia?</strong><small>Ver canales de atención</small></span></button>
+        <button class="logout-button" data-action="logout">Cerrar sesión</button>
+      </div>
+    </aside>
+    <div class="sidebar-scrim" id="sidebarScrim" data-action="close-sidebar" hidden></div>
+
+    <div class="portal-shell">
+      <header class="portal-topbar">
+        <div class="portal-topbar__left">
+          <button class="icon-button portal-menu-button" data-action="open-sidebar" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+          <div id="portalBreadcrumb" class="portal-breadcrumb"></div>
+        </div>
+        <div class="portal-topbar__actions">
+          <button id="installAppButton" class="button button--soft button--compact" data-action="install-app" hidden>Instalar app</button>
+          <button class="notification-button" data-action="toggle-notifications" aria-label="Notificaciones"><span class="notification-button__bell">♢</span><span id="notificationCount" class="notification-count">0</span></button>
+          <button class="topbar-profile" data-action="navigate" data-route="profile" id="topbarProfile"></button>
+        </div>
+      </header>
+      <main id="portalMain" class="portal-main" tabindex="-1"></main>
+      <nav id="mobilePortalNav" class="mobile-portal-nav" aria-label="Navegación móvil"></nav>
+    </div>
+
+    <aside id="notificationPanel" class="notification-panel" hidden>
+      <div class="notification-panel__header"><div><span class="eyebrow">Actividad</span><h2>Notificaciones</h2></div><button class="icon-button" data-action="toggle-notifications" aria-label="Cerrar notificaciones">×</button></div>
+      <div id="notificationList" class="notification-list"></div>
+      <button class="button button--soft button--full" data-action="mark-notifications-read">Marcar todo como leído</button>
+    </aside>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <input id="documentUploadInput" type="file" accept="image/*,.pdf" hidden multiple>
+
+  <noscript><div class="noscript-message">Esta aplicación necesita JavaScript para gestionar el portal del paciente.</div></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>
