@@ -88,7 +88,8 @@
     { route: "profile", label: "Perfil y cobertura", icon: "assets/icons/icon-perfil.webp", group: "Cuenta" }
   ];
 
-  const MOBILE_NAV_ROUTES = ["dashboard", "appointments", "health", "messages", "profile"];
+  const MOBILE_NAV_ROUTES = ["dashboard", "appointments", "health", "messages", "payments", "profile"];
+  const MOBILE_NAV_LABELS = { dashboard: "Inicio", appointments: "Turnos", health: "Mi salud", messages: "Mensajes", payments: "Pagos", profile: "Perfil" };
 
   const defaultState = () => ({
     version: APP_VERSION,
@@ -353,7 +354,7 @@
 
     const mobileNav = qs("#mobilePortalNav");
     mobileNav.innerHTML = NAV_ITEMS.filter((item) => MOBILE_NAV_ROUTES.includes(item.route)).map((item) => `
-      <button type="button" class="${item.route === route ? "is-active" : ""}" data-action="navigate" data-route="${item.route}"><img src="${item.icon}" alt=""><span>${item.route === "dashboard" ? "Inicio" : escapeHtml(item.label.replace(" y cobertura", ""))}</span></button>
+      <button type="button" class="${item.route === route ? "is-active" : ""}" data-action="navigate" data-route="${item.route}"><img src="${item.icon}" alt=""><span>${escapeHtml(MOBILE_NAV_LABELS[item.route] || item.label)}</span></button>
     `).join("");
 
     const item = NAV_ITEMS.find((navItem) => navItem.route === route) || NAV_ITEMS[0];
@@ -1181,8 +1182,7 @@
     window.addEventListener("beforeinstallprompt", (event) => {
       event.preventDefault();
       deferredInstallPrompt = event;
-      const button = qs("#installAppButton");
-      if (button) button.hidden = false;
+      setInstallButtonsHidden(false);
     });
     if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
       navigator.serviceWorker.register("./sw.js").catch((error) => console.warn("Service worker no registrado:", error));
@@ -1197,7 +1197,16 @@
     deferredInstallPrompt.prompt();
     await deferredInstallPrompt.userChoice;
     deferredInstallPrompt = null;
-    qs("#installAppButton").hidden = true;
+    setInstallButtonsHidden(true);
+  }
+
+  /* El topbar no tiene lugar para el botón en pantallas chicas, así que la
+     acción vive también en el menú hamburguesa y en el menú lateral. */
+  function setInstallButtonsHidden(hidden) {
+    ["#installAppButton", "#installAppButtonPublic", "#installAppButtonSidebar"].forEach((selector) => {
+      const button = qs(selector);
+      if (button) button.hidden = hidden;
+    });
   }
 
   function init() {

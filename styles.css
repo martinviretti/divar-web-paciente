@@ -1018,3 +1018,75 @@ img { max-width: 100%; display: block; }
 .brand-link .brand-lockup__mark { width: 44px; height: 44px; filter: none; }
 .portal-sidebar__brand .brand-lockup__mark,
 .public-footer .brand-lockup__mark { filter: none; }
+
+/* ==========================================================================
+   Correcciones de responsive mobile (v2.0.1)
+   Recuperan contenido y acciones que se perdían en pantallas chicas.
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  /* La lista de conversaciones dejaba de existir en mobile: se recupera como
+     tira horizontal arriba del chat en lugar de ocultarse. */
+  .message-sidebar {
+    display: block;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .message-sidebar__header { padding: 14px 16px 10px; }
+  .message-sidebar__header h2 { font-size: 14px; }
+  .message-sidebar__list,
+  .message-sidebar > .conversation-item { scroll-snap-align: start; }
+  .message-sidebar .conversation-item + .conversation-item { border-top: 1px solid var(--ink-200); }
+  .message-sidebar .conversation-item span { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+}
+
+@media (max-width: 700px) {
+  /* El diente decorativo (215px) desbordaba su contenedor de 180px hacia
+     arriba y tapaba el botón "Ver o gestionar". */
+  .dashboard-hero__visual { height: auto; min-height: 150px; padding-top: 6px; }
+  .dashboard-hero__visual img { width: 190px; max-height: 190px; }
+
+  /* "Instalar app" es la acción más relevante justo en mobile, pero no entra
+     en el topbar (a 360px lo desborda). Se sirve desde el menú hamburguesa
+     y desde el menú lateral del portal. */
+  .portal-topbar__actions > .button { display: none; }
+  #installAppButtonSidebar:not([hidden]) { display: inline-flex; margin-bottom: 10px; }
+
+  /* Se perdía qué paciente tiene la sesión activa (las cuentas son familiares).
+     El topbar tiene que poder encogerse: sin min-width 0 los títulos largos
+     ("Pagos y presupuestos") empujaban el perfil fuera de la pantalla. */
+  .portal-topbar { gap: 8px; }
+  .portal-topbar__left { min-width: 0; flex: 1 1 auto; }
+  .portal-breadcrumb { min-width: 0; }
+  .portal-breadcrumb__title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .portal-topbar__actions { flex: 0 0 auto; min-width: 0; }
+  .topbar-profile > span { display: block; max-width: 84px; }
+  .topbar-profile strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+  .topbar-profile > span > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 8px; }
+
+  /* Sexto ítem: Pagos ya no queda sólo detrás del menú lateral. */
+  .mobile-portal-nav { grid-template-columns: repeat(6, 1fr); padding: 6px 4px; }
+  .mobile-portal-nav button { border-radius: 13px; font-size: 7px; }
+  .mobile-portal-nav button img { width: 24px; height: 24px; }
+
+  /* La barra inferior asomaba por detrás de los modales. */
+  body.modal-open .mobile-portal-nav { display: none; }
+
+  /* Nombre y relación del paciente se imprimían pegados en una sola línea. */
+  .patient-selection-card > span:last-child { display: grid; gap: 3px; min-width: 0; }
+  .patient-selection-card > span:last-child > strong { margin-top: 0; font-size: 13px; }
+  .patient-selection-card > span:last-child > span { margin-top: 0; font-size: 10px; }
+}
+
+@media (max-width: 430px) {
+  /* Los números del hero quedaban sin etiqueta ("1", "24/7", "Web + app"
+     sin decir de qué). Se apilan en vez de desaparecer. */
+  .hero-trust span { display: block; font-size: 8px; }
+  .hero-trust > div { padding: 0 6px; }
+
+  .mobile-portal-nav button { font-size: 6px; }
+  .mobile-portal-nav button img { width: 22px; height: 22px; }
+  .topbar-profile > span { max-width: 72px; }
+  /* "Portal del paciente" se partía en dos líneas y estiraba el topbar. */
+  .portal-breadcrumb__eyebrow { display: none; }
+}
