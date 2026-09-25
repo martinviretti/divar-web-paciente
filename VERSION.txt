@@ -1,4 +1,4 @@
 DIVAR Web + Portal de Pacientes
-Versión: 2.0.1-demo
+Versión: 2.0.2-demo
 Fecha: 2026-09-25
 Tipo: frontend funcional / PWA demostrativa sin backend

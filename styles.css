@@ -1090,3 +1090,52 @@ img { max-width: 100%; display: block; }
   /* "Portal del paciente" se partía en dos líneas y estiraba el topbar. */
   .portal-breadcrumb__eyebrow { display: none; }
 }
+
+/* ==========================================================================
+   Encuadre de imágenes (v2.0.2)
+   Varios contenedores dimensionaban la imagen con alto porcentual sobre una
+   fila de grid/flex de alto indefinido. El porcentaje se resolvía contra la
+   relación de aspecto de la propia imagen en vez de contra el contenedor, así
+   que la imagen salía más alta que su caja y `overflow: hidden` le cortaba la
+   base. Sólo se notaba en mobile, donde las tarjetas ocupan todo el ancho.
+   Posicionarlas en absoluto ancla el porcentaje al contenedor y vuelve el
+   encuadre determinista.
+   ========================================================================== */
+
+.treatment-card__image { position: relative; }
+.treatment-card__image img {
+  position: absolute;
+  top: 9%;
+  left: 9%;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
+.professional-card__photo { position: relative; }
+.professional-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* El diente de la maqueta del portal sobresalía por arriba de su franja. */
+.preview-dashboard__hero img { max-height: 100%; object-fit: contain; }
+
+@media (max-width: 860px) {
+  /* La foto de la clínica es casi cuadrada (510x504) y se servía en una caja
+     de 347x480: `cover` descartaba el 28% de la imagen y la dejaba
+     sobreampliada. Con relación de aspecto propia el recorte es marginal. */
+  .access-image-card { min-height: 0; aspect-ratio: 1 / 1; }
+  .access-image-card > img { min-height: 0; height: 100%; object-fit: cover; }
+}
+
+@media (max-width: 700px) {
+  /* Las tarjetas pasan a una sola columna y quedan mucho más anchas que
+     altas: sin más alto, la ilustración queda diminuta y perdida. */
+  .treatment-card__image { height: 210px; }
+  .professional-card__photo { height: 290px; }
+}
